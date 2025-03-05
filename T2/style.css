@@ -1,0 +1,86 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 800px;
+}
+
+.form-penjualan, .data-penjualan {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-penjualan h2, .data-penjualan h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-penjualan form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-penjualan label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-penjualan input {
+    width: calc(100% - 18px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-penjualan button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.form-penjualan button:hover {
+    background-color: #0056b3;
+}
+
+.data-penjualan table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd; /* Menambahkan border pada tabel */
+}
+
+.data-penjualan th, .data-penjualan td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.data-penjualan th {
+    background-color: #007bff; /* Warna biru untuk header tabel */
+    color: white; /* Teks putih untuk header tabel */
+    text-align: left; /* Teks rata kiri untuk header tabel */
+}
+
+.data-penjualan tr:last-child td {
+    background-color: #f2f2f2; /* Warna abu-abu untuk baris total */
+}
