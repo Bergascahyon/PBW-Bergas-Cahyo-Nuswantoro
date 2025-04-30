@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kalkulator JavaScript</title>
+    <style>
+        .calculator {
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .display {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 10px;
+            text-align: right;
+            padding: 5px;
+            font-size: 18px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        button {
+            height: 50px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .equals {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .clear {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" class="display" id="display" disabled>
+        <div class="buttons">
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('*')">*</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="clearDisplay()" class="clear">C</button>
+            <button onclick="appendToDisplay('/')">/</button>
+            <button onclick="appendToDisplay('%')">%</button>
+            <button onclick="calculate()" class="equals">=</button>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk menambahkan nilai ke display
+        const appendToDisplay = (value) => {
+            document.getElementById('display').value += value;
+        };
+
+        // Fungsi untuk menghapus display
+        const clearDisplay = () => {
+            document.getElementById('display').value = '';
+        };
+
+        // Kalkulator dengan arrow function dan spread operator
+        const calculate = () => {
+            try {
+                const expression = document.getElementById('display').value;
+                const numbers = expression.split(/[\+\-\*\/%]/).map(Number);
+                const operators = expression.split(/[0-9\.]+/).filter(op => op);
+                
+                if (numbers.length - 1 !== operators.length) {
+                    throw new Error("Ekspresi tidak valid");
+                }
+
+                // Menggunakan spread operator untuk mengambil semua angka
+                let result = numbers[0];
+                for (let i = 0; i < operators.length; i++) {
+                    const operator = operators[i];
+                    const nextNumber = numbers[i + 1];
+                    
+                    // Menggunakan arrow function untuk setiap operasi
+                    const operations = {
+                        '+': (a, b) => a + b,
+                        '-': (a, b) => a - b,
+                        '*': (a, b) => a * b,
+                        '/': (a, b) => a / b,
+                        '%': (a, b) => a % b
+                    };
+                    
+                    if (operations[operator]) {
+                        result = operations[operator](result, nextNumber);
+                    } else {
+                        throw new Error("Operator tidak dikenali");
+                    }
+                }
+                
+                document.getElementById('display').value = result;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+                setTimeout(clearDisplay, 1000);
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deret Fibonacci</title>
+</head>
+<body>
+    <h2>Deret Fibonacci</h2>
+    <label for="fibonacciInput">Masukkan jumlah deret Fibonacci:</label>
+    <input type="number" id="fibonacciInput" min="1" value="10">
+    <button onclick="printFibonacci()">Tampilkan Deret</button>
+    <p id="fibonacciResult"></p>
+
+    <script>
+        // Fungsi untuk menghasilkan deret Fibonacci
+        const generateFibonacci = (n) => {
+            let fib = [0, 1];
+            for (let i = 2; i < n; i++) {
+                fib[i] = fib[i - 1] + fib[i - 2];
+            }
+            return fib.slice(0, n);
+        };
+
+        // Fungsi untuk menampilkan deret Fibonacci
+        const printFibonacci = () => {
+            const n = parseInt(document.getElementById('fibonacciInput').value);
+            const result = generateFibonacci(n);
+            document.getElementById('fibonacciResult').textContent = 
+                `Deret Fibonacci pertama ${n} angka: ${result.join(', ')}`;
+        };
+
+        // Tampilkan deret default saat halaman dimuat
+        window.onload = printFibonacci;
+    </script>
+</body>
+</html>
