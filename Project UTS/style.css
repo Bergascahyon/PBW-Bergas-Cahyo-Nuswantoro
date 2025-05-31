@@ -1,0 +1,21 @@
+/* Custom classes (di atas Tailwind) */
+.cta-button {
+    @apply bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition;
+  }
+  
+  .card {
+    @apply bg-white p-4 rounded shadow hover:shadow-lg transition;
+  }
+  
+  .card-img {
+    @apply rounded mb-4;
+  }
+  
+  .card-title {
+    @apply font-semibold text-xl mb-2;
+  }
+  
+  .card-desc {
+    @apply text-gray-600;
+  }
+  
